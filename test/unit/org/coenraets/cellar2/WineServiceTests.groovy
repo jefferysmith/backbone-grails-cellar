@@ -62,8 +62,29 @@ class WineServiceTests {
         def createdWine = service.create(newWine)
         assertNotNull(createdWine)
         createdWine.name = "newName"
-        shouldFail(IllegalArgumentException) {
-            service.create(createdWine)
-        }
+        shouldFail(IllegalArgumentException) { service.create(createdWine) }
+    }
+
+    @Test
+    void testUpdate() {
+        def newWine = new Wine( name: 'name', grapes: 'grapes',
+                country: 'country', region: 'region', year: 'year',
+                picture: 'picture',
+                description: 'description' )
+        def createdWine = service.create(newWine)
+        assertNotNull(createdWine)
+        createdWine.name = "newName"
+        def updatedWine = service.update(createdWine)
+        assertNotNull(updatedWine)
+        assertEquals("newName", updatedWine.name)
+    }
+
+    @Test
+    void testUpdate_new() {
+        def newWine = new Wine( name: 'name', grapes: 'grapes',
+                country: 'country', region: 'region', year: 'year',
+                picture: 'picture',
+                description: 'description' )
+        shouldFail(IllegalArgumentException) { service.update(newWine) }
     }
 }

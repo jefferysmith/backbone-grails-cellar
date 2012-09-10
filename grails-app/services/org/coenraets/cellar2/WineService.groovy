@@ -21,4 +21,12 @@ class WineService {
         }
         wine.save()
     }
+
+    def update(wine) {
+        if(!wine.id) {
+            log.error("Can't update an unsaved wine. Use create instead")
+            throw new IllegalArgumentException()
+        }
+        wine.save()
+    }
 }
