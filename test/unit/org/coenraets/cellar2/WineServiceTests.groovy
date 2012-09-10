@@ -16,6 +16,18 @@ class WineServiceTests {
         new Wine().save(validate: false)
         new Wine().save(validate: false)
         def result = service.findAll()
-        assertEquals 3, result.size()
+        assertEquals(3, result.size())
+    }
+
+    void testFindByName() {
+        new Wine(name: 'wineName1').save(validate: false)
+        new Wine(name: 'wineName2').save(validate: false)
+        def foundWine = service.findByName('wineName1')
+        assertEquals('wineName1', foundWine.name)
+    }
+
+    void testFindByName_notFound() {
+        def foundWine = service.findByName('none')
+        assertNull(foundWine)
     }
 }
