@@ -26,7 +26,21 @@ class WineIntegrationTests {
         assertEquals 'CHATEAU DE SAINT COSME', foundWine.name
     }
 
-    /**
+    @Test
+    void testSaveAndEditWine() {
+        def wine = createWine()
+        assertNotNull wine.save()
+        assertNotNull wine.id
+
+        def foundWine = Wine.get(wine.id)
+        foundWine.year = '2008'
+        foundWine.save()
+
+        def editedWine = Wine.get(wine.id)
+        assertEquals '2008', editedWine.year
+    }
+
+        /**
      * Utility to create a new wine instance
      */
     private Wine createWine() {
