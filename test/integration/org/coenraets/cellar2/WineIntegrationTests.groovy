@@ -51,13 +51,13 @@ class WineIntegrationTests {
         assertFalse Wine.exists(foundWine.id)
     }
 
-        /**
+    /**
      * Utility to create a new wine instance
      */
     private Wine createWine() {
         def wine = new Wine( name: 'CHATEAU DE SAINT COSME', grapes: 'Grenache / Syrah',
-            country: 'France', region: 'Southern Rhone / Gigondas', year: '2009',
-            picture: 'saint_cosme.jpg',
-            description: 'The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes.' )
+                country: 'France', region: 'Southern Rhone / Gigondas', year: '2009',
+                picture: 'saint_cosme.jpg',
+                description: 'The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes.' )
     }
 }
