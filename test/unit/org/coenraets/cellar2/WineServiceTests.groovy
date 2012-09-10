@@ -30,4 +30,11 @@ class WineServiceTests {
         def foundWine = service.findByName('none')
         assertNull(foundWine)
     }
+
+    void testFindById() {
+        new Wine(id: 1, name: 'wineName1').save(validate: false)
+        new Wine(id: 2, name: 'wineName2').save(validate: false)
+        def foundWine = service.findById(2)
+        assertNotNull(foundWine)
+    }
 }

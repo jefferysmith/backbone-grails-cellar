@@ -9,4 +9,8 @@ class WineService {
     def findByName(name) {
         Wine.findByName(name)
     }
+
+    def findById(id) {
+        Wine.get(id)
+    }
 }
