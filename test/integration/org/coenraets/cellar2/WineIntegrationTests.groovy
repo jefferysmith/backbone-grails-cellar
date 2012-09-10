@@ -40,6 +40,17 @@ class WineIntegrationTests {
         assertEquals '2008', editedWine.year
     }
 
+    @Test
+    void testSaveAndDeleteWine() {
+        def wine = createWine()
+        assertNotNull wine.save()
+        assertNotNull wine.id
+
+        def foundWine = Wine.get(wine.id)
+        foundWine.delete()
+        assertFalse Wine.exists(foundWine.id)
+    }
+
         /**
      * Utility to create a new wine instance
      */
