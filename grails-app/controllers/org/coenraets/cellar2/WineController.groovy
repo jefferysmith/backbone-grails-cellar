@@ -3,7 +3,7 @@ package org.coenraets.cellar2
 import grails.converters.JSON
 
 class WineController {
-    
+
     WineService wineService
 
     /**
@@ -48,11 +48,13 @@ class WineController {
      * DELETE api/wines/{id} : delete wine with id
      */
      def delete = {
-       render "<h2>Delete method</h2>"
        if(params.id) {
-         render "<h3>delete wine with id: ${params.id}</h3>"
+         log.debug("delete wine with id: ${params.id}")
+         wineService.remove(params.id)
+         render "OK"
        } else {
-         render "<h3>error: param required</h3>"
+         log.debug("cannot delete wine without providing an id")
+         render "ERROR"
        }
     }
 
