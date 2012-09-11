@@ -21,17 +21,26 @@ class WineServiceTests {
     }
 
     @Test
-    void testFindByName() {
+    void testFindByName_single() {
         new Wine(name: 'wineName1').save(validate: false)
         new Wine(name: 'wineName2').save(validate: false)
-        def foundWine = service.findByName('wineName1')
-        assertEquals('wineName1', foundWine.name)
+        def results = service.findByName('wineName1')
+        assertEquals(1, results.size())
+        assertEquals('wineName1', results[0].name)
     }
 
     @Test
+    void testFindByName_multiple() {
+        new Wine(name: 'wineName1').save(validate: false)
+        new Wine(name: 'wineName2').save(validate: false)
+        def results = service.findByName('winename')
+        assertEquals(2, results.size())
+    }
+
+        @Test
     void testFindByName_notFound() {
-        def foundWine = service.findByName('none')
-        assertNull(foundWine)
+        def results = service.findByName('none')
+        assertTrue(results.isEmpty())
     }
 
     @Test

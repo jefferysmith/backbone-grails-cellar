@@ -7,7 +7,7 @@ class WineService {
     }
 
     def findByName(name) {
-        Wine.findByName(name)
+        Wine.findAllByNameIlike("%" + name + "%")
     }
 
     def findById(id) {
