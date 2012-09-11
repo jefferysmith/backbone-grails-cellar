@@ -29,4 +29,13 @@ class WineService {
         }
         wine.save()
     }
+
+    def remove(id) {
+        def wine = Wine.get(id)
+        if (!wine) {
+            log.error("Unable to delete wine with id: ${id}. Wine not found")
+            throw new IllegalArgumentException()
+        }
+        wine.delete(flush: true)
+    }
 }

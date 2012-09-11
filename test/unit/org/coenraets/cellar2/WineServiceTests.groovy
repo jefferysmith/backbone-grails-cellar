@@ -87,4 +87,17 @@ class WineServiceTests {
                 description: 'description' )
         shouldFail(IllegalArgumentException) { service.update(newWine) }
     }
+
+    @Test
+    void testDelete() {
+        new Wine(id: 1, name: 'wineName1').save(validate: false)
+        new Wine(id: 2, name: 'wineName2').save(validate: false)
+        service.remove(2)
+        assertFalse(Wine.exists(2))
+    }
+
+    @Test
+    void testDelete_notFound() {
+        shouldFail(IllegalArgumentException) { service.remove(2) }
+    }
 }
