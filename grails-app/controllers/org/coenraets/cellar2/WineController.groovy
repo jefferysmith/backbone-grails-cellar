@@ -1,5 +1,7 @@
 package org.coenraets.cellar2
 
+import grails.converters.JSON
+
 class WineController {
     
     WineService wineService
@@ -9,13 +11,12 @@ class WineController {
      * GET api/wines/{id} : get wine with id
      */
     def show = {
-        render "<h2>Show method</h2>"
         if (params.id) {
-          render "<h3>id = ${params.id}</h3>"
+          log.debug("findById: ${params.id}")
+          render wineService.findById(params.id) as JSON
         } else {
-          def wines = wineService.findAll()
-          def wineCount = wines.size()
-          render "<h3>There are currently ${wineCount} wines stored.</h3>"
+          log.debug("findAll")
+          render wineService.findAll() as JSON
         }
     }
 
