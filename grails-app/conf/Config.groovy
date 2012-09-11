@@ -98,3 +98,6 @@ log4j = {
         }
     }
 }
+
+// Custom JSON Marshaller - default fields to exclude from all domain classes when marshalling
+grails.json.serialization.exclude=["class", "metaClass"]

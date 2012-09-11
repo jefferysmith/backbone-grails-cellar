@@ -1,12 +1,22 @@
+import org.codehaus.groovy.grails.support.proxy.DefaultProxyHandler
+import org.coenraets.cellar2.CustomDomainJSONMarshaller
 import org.coenraets.cellar2.Wine
 
 class BootStrap {
 
+    def grailsApplication
+
     def init = { servletContext ->
-        environments { 
-            development { 
+        // Register a customer json marshaller
+        grails.converters.JSON.registerObjectMarshaller(new CustomDomainJSONMarshaller(false, new DefaultProxyHandler(), grailsApplication))
+
+        // map a value of "null" for a json attribute to false
+        // fixed in future version http://jira.grails.org/browse/GRAILS-7739
+        org.codehaus.groovy.grails.web.json.JSONObject.NULL.metaClass.asBoolean = {-> false}
+        environments {
+            development {
                 loadWines()
-            } 
+            }
         }
     }
     def destroy = {
