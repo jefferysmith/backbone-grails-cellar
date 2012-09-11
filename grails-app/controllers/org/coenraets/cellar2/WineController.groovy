@@ -75,11 +75,12 @@ class WineController {
      * GET api/wines/search/{query} : search wines for query term
      */
     def search = {
-        render "<h2>Search method</h2>"
         if(params.query) {
-            render "<h3>search wines for : ${params.query}</h3>"
+            log.debug("findByName with query: ${params.query}")
+            render wineService.findByName(params.query) as JSON
         } else {
-            render "<h3>error: param required</h3>"
+            log.debug("no query provided.")
+            render "ERROR"
         }
     }
 }
