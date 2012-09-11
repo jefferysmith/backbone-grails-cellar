@@ -1,5 +1,8 @@
 package org.coenraets.cellar2
 
+import groovy.transform.ToString
+
+@ToString(includeNames=true)
 class Wine {
 
     String name
