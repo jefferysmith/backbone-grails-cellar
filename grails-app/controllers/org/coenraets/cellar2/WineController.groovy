@@ -1,6 +1,8 @@
 package org.coenraets.cellar2
 
 class WineController {
+    
+    WineService wineService
 
     /**
      * GET api/wines : list of all wines
@@ -11,7 +13,9 @@ class WineController {
         if (params.id) {
           render "<h3>id = ${params.id}</h3>"
         } else {
-          render "<h3>no id</h3>"
+          def wines = wineService.findAll()
+          def wineCount = wines.size()
+          render "<h3>There are currently ${wineCount} wines stored.</h3>"
         }
     }
 
