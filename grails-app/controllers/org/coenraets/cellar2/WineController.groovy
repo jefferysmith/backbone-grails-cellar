@@ -31,12 +31,7 @@ class WineController {
         log.debug("creating new wine")
         // not sure if this approach works with relations/nested objects
         def wine = new Wine(params)
-        if(!wine.save()) {
-            wine.errors.each {
-                log.debug(it)
-            }
-        }
-        render "OK"
+        render wineService.create(wine) as JSON
       }
     }
 
