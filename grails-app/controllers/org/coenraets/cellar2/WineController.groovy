@@ -24,11 +24,19 @@ class WineController {
      * POST api/wines : add a new wine
      */
     def save = {
-      render "<h2>Save method</h2>"
       if(params.id) {
-        render "<h3>error: no params supported</h3>"
+        log.error("cannot create a new wine from an existing wine - id: ${params.id}")
+        render "ERROR"
       } else {
-        render "<h3>add a new wine</h3>"
+        log.debug("creating new wine")
+        // not sure if this approach works with relations/nested objects
+        def wine = new Wine(params)
+        if(!wine.save()) {
+            wine.errors.each {
+                log.debug(it)
+            }
+        }
+        render "OK"
       }
     }
 
