@@ -19,7 +19,12 @@ class WineService {
             log.error("Can't create new wine using existing wine. Given wine with id ${wine.id}")
             throw new IllegalArgumentException()
         }
-        wine.save()
+        if(!wine.save()) {
+            wine.errors.each {
+                log.debug(it)
+            }
+        }
+        return wine
     }
 
     def update(wine) {
@@ -27,7 +32,12 @@ class WineService {
             log.error("Can't update an unsaved wine. Use create instead")
             throw new IllegalArgumentException()
         }
-        wine.save()
+        if(!wine.save()) {
+            wine.errors.each {
+                log.debug(it)
+            }
+        }
+        return wine
     }
 
     def remove(id) {
