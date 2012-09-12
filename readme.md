@@ -8,14 +8,14 @@ This application provides an example of
 2. Consuming these services using Backbone.js client application
 
 ## Notes ##
-Forked version of original wine cellar application. 
+Forked version of the original wine cellar application. 
 
 ## Run from Grails command prompt: ##
 
-TBD
+1. run `grails run-app` to start the app in the default grails container (localhost:8080)
 
 ## View in Eclipse ##
 
-1. run 'grails integrate-with --eclipse' to generate the eclipse project files
+1. run `grails integrate-with --eclipse` to generate the eclipse project files
 2. import the project into Eclipse (inside Eclipse: File->Import->Existing Project into Workspace)
 
