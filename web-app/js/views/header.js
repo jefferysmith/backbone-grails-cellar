@@ -1,21 +1,33 @@
-window.HeaderView = Backbone.View.extend({
+define([
+  'jquery',
+  'underscore',
+  'utils',
+  'backbone'
+  ], function ($, _, tpl, Backbone) {
 
-    initialize : function() {
-        this.template = _.template(tpl.get('header'));
-    },
+    var headerView = Backbone.View.extend({
 
-    render : function(eventName) {
-        $(this.el).html(this.template());
-        return this;
-    },
+        initialize : function() {
+            console.log('headerview init')
+            var hdr = tpl.get('header');
+            this.template = _.template(hdr);
+//            this.template = _.template(tpl.get('header'));
+        },
 
-    events : {
-        "click .new" : "newWine"
-    },
+        render : function(eventName) {
+            console.log('headerview render')
+            $(this.el).html(this.template());
+            return this;
+        },
 
-    newWine : function(event) {
-        app.navigate("wines/new", true);
-        return false;
-    }
+        events : {
+            "click .new" : "newWine"
+        },
 
+        newWine : function(event) {
+            app.navigate("wines/new", true);
+            return false;
+        }
+    });
+    return headerView;
 });
