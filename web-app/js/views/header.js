@@ -1,17 +1,16 @@
 define([
   'jquery',
   'underscore',
-  'utils',
-  'backbone'
-  ], function ($, _, tpl, Backbone) {
+  'backbone',
+  'text!templates/header.html'
+  ], function ($, _, Backbone, headerTemplate) {
 
     var headerView = Backbone.View.extend({
+        
+        template: _.template(headerTemplate),
 
         initialize : function() {
-            console.log('headerview init')
-            var hdr = tpl.get('header');
-            this.template = _.template(hdr);
-//            this.template = _.template(tpl.get('header'));
+            console.log('headerview init');
         },
 
         render : function(eventName) {
@@ -25,7 +24,7 @@ define([
         },
 
         newWine : function(event) {
-            app.navigate("wines/new", true);
+            this.navigate("wines/new", true);
             return false;
         }
     });

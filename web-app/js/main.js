@@ -1,8 +1,29 @@
 require([
-         'routers/router',
-         'utils'
-         ], function (AppRouter, Utils) {
+  'jquery',
+  'underscore',
+  'backbone',
+  'routers/router',
+  'views/header',
+  ], function ($, _, Backbone, AppRouter, HeaderView ) {
     console.log('starting main');
-    Utils.loadTemplates([ 'header', 'wine-details', 'wine-list-item' ])
-    new AppRouter();
+
+    var appRouter = new AppRouter();
+
+    // extend backbone classes for additional functionality
+    // Maybe should be done somewhere else?
+    Backbone.View.prototype.close = function() {
+        console.log('Closing view ' + this);
+        if (this.beforeClose) {
+            this.beforeClose();
+        }
+        this.remove();
+        this.unbind();
+    };
+    Backbone.View.goTo = function (loc) {
+        appRouter.navigate(loc, true);
+    };
+
+    // start rendering the content
+    $('#header').html(new HeaderView().render());
+
 });

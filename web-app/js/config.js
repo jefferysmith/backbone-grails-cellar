@@ -12,7 +12,10 @@ requirejs.config({
     underscore: "../lib/underscore",
     backbone: "../lib/backbone",
     handlebars: "../lib/handlebars",
-
+    text: "../lib/text",
+        
+    // Templates
+    templates: "../tpl"
   },
 
   // non-amd compliant dependencies

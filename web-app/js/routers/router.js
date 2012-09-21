@@ -2,25 +2,16 @@ define([
     'jquery',
     'backbone',
     'underscore',
-    'views/header',
     'views/winelist',
     'views/winedetails',
     'models/winecollection'
-    ], function ($, Backbone, _, HeaderView, WineListView, WineDetailsView, WineCollection ) {
+    ], function ($, Backbone, _, WineListView, WineDetailsView, WineCollection ) {
     var appRouter = Backbone.Router.extend({
 
         initialize : function() {
             console.log('initializing router');
-            Backbone.View.prototype.close = function() {
-                console.log('Closing view ' + this);
-                if (this.beforeClose) {
-                    this.beforeClose();
-                }
-                this.remove();
-                this.unbind();
-            };
+            // router initialize
             Backbone.history.start();
-            $('#header').html(new HeaderView().render().el);
         },
 
         routes : {
