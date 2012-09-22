@@ -2,10 +2,11 @@ define([
     'jquery',
     'backbone',
     'underscore',
+    'models/winemodel',
     'views/winelist',
     'views/winedetails',
     'models/winecollection'
-    ], function ($, Backbone, _, WineListView, WineDetailsView, WineCollection ) {
+    ], function ($, Backbone, _, Wine, WineListView, WineDetailsView, WineCollection ) {
     var appRouter = Backbone.Router.extend({
 
         initialize : function() {
@@ -25,17 +26,19 @@ define([
         },
 
         wineDetails : function(id) {
+            var that = this;
             this.before(function() {
-                var wine = WineCollection.get(id);
-                showView('#content', new WineDetailsView({
+                var wine = that.wineList.get(id);
+                that.showView('#content', new WineDetailsView({
                     model : wine
                 }));
             });
         },
 
         newWine : function() {
+            var that = this
             this.before(function() {
-                showView('#content', new WineDetailsView({
+                that.showView('#content', new WineDetailsView({
                     model : new Wine()
                 }));
             });
@@ -56,12 +59,15 @@ define([
             } else {
                 this.wineList = new WineCollection();
                 this.wineList.fetch({
-                    success : function() {
+                    success : function(collection, response) {
                         $('#sidebar').html(new WineListView({
-                            model : WineCollection
+                            model : collection
                         }).render().el);
                         if (callback)
                             callback();
+                    },
+                    error: function(collection, response) {
+                        console.log('wineCollection not fetched...');
                     }
                 });
             }

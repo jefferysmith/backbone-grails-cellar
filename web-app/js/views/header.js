@@ -24,7 +24,7 @@ define([
         },
 
         newWine : function(event) {
-            this.navigate("wines/new", true);
+            this.goTo("wines/new", true);
             return false;
         }
     });

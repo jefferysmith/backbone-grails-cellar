@@ -19,11 +19,11 @@ require([
         this.remove();
         this.unbind();
     };
-    Backbone.View.goTo = function (loc) {
+    Backbone.View.prototype.goTo = function (loc) {
         appRouter.navigate(loc, true);
     };
 
     // start rendering the content
-    $('#header').html(new HeaderView().render());
+    $('#header').html(new HeaderView().render().el);
 
 });

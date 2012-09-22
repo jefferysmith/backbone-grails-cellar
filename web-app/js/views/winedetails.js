@@ -1,17 +1,18 @@
 define([
         'underscore',
         'jquery',
-        'models/winecollection'
-        ], function (_, $, wineList) {
+        'models/winecollection',
+        'text!templates/wine-details.html'
+        ], function (_, $, wineList, wineDetailsTemplate) {
 
     var wineView = Backbone.View.extend({
 
-        tagName : "div", // Not required since 'div' is the default if no el or
-        // tagName specified
+        tagName : "div", // Not required since 'div' is the default if no el or tagName specified
+        
+        template: _.template(wineDetailsTemplate),
 
         initialize : function() {
             console.log('wineview init')
-            this.template = _.template(tpl.get('wine-details'));
             this.model.bind("change", this.render, this);
         },
 
@@ -50,7 +51,7 @@ define([
                 var self = this;
                 wineList.create(this.model, {
                     success : function() {
-                        app.navigate('wines/' + self.model.id, false);
+                        this.goTo('wines/' + self.model.id, false);
                     }
                 });
             } else {

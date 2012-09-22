@@ -1,15 +1,17 @@
 define([
         'jquery',
         'underscore',
-        'backbone'
-        ], function ($, _, Backbone) {
+        'backbone',
+        'text!templates/wine-list-item.html'
+        ], function ($, _, Backbone, WineListItemTemplate) {
     var wineListItemView = Backbone.View.extend({
 
         tagName : "li",
+        
+        template: _.template(WineListItemTemplate),
 
         initialize : function() {
             console.log('winelistitemview init')
-            this.template = _.template(tpl.get('wine-list-item'));
             this.model.bind("change", this.render, this);
             this.model.bind("destroy", this.close, this);
         },

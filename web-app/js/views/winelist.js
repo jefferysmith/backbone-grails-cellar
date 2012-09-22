@@ -1,8 +1,9 @@
 define([
         'jquery',
         'underscore',
-        'backbone'
-        ], function ($, _, Backbone) {
+        'backbone',
+        'views/winelistitem'
+        ], function ($, _, Backbone, WineListItemView) {
     var wineListView = Backbone.View.extend({
 
         tagName : 'ul',
