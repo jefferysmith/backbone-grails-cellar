@@ -38,8 +38,11 @@ define([
         newWine : function() {
             var that = this
             this.before(function() {
+                // uses special options 'model' and 'collection' to attach to the view
+                // http://backbonejs.org/#View-constructor
                 that.showView('#content', new WineDetailsView({
-                    model : new Wine()
+                    model : new Wine(),
+                    collection: that.wineList
                 }));
             });
         },

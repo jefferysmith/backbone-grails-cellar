@@ -21,7 +21,7 @@ define([
 
         render : function(eventName) {
             console.log('winelistview render')
-            _.each(this.model.models, function(wine) {
+            this.model.each( function(wine) {
                 $(this.el).append(new WineListItemView({
                     model : wine
                 }).render().el);

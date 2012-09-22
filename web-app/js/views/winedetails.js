@@ -49,9 +49,9 @@ define([
             });
             if (this.model.isNew()) {
                 var self = this;
-                wineList.create(this.model, {
+                this.collection.create(this.model, {
                     success : function() {
-                        this.goTo('wines/' + self.model.id, false);
+                        self.goTo('wines/' + self.model.id, false);
                     }
                 });
             } else {
