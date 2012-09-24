@@ -3,8 +3,9 @@ require([
   'underscore',
   'backbone',
   'routers/router',
-  'views/header',
+  'views/header'
   ], function ($, _, Backbone, AppRouter, HeaderView ) {
+    "use strict";
     console.log('starting main');
 
     var appRouter = new AppRouter();

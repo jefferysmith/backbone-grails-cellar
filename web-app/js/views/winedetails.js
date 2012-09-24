@@ -1,9 +1,11 @@
 define([
         'underscore',
         'jquery',
+        'backbone',
         'models/winecollection',
         'text!templates/wine-details.html'
-        ], function (_, $, wineList, wineDetailsTemplate) {
+        ], function (_, $, Backbone, wineList, wineDetailsTemplate) {
+    "use strict";
 
     var wineView = Backbone.View.extend({
 
@@ -12,12 +14,12 @@ define([
         template: _.template(wineDetailsTemplate),
 
         initialize : function() {
-            console.log('wineview init')
+            console.log('wineview init');
             this.model.bind("change", this.render, this);
         },
 
         render : function(eventName) {
-            console.log('wineview render')
+            console.log('wineview render');
             $(this.el).html(this.template(this.model.toJSON()));
             return this;
         },
@@ -30,8 +32,7 @@ define([
 
         change : function(event) {
             var target = event.target;
-            console.log('changing ' + target.id + ' from: ' + target.defaultValue + ' to: '
-                    + target.value);
+            console.log('changing ' + target.id + ' from: ' + target.defaultValue + ' to: ' + target.value);
             // You could change your model on the spot, like this:
             // var change = {};
             // change[target.name] = target.value;

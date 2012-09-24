@@ -7,6 +7,7 @@ define([
     'views/winedetails',
     'models/winecollection'
     ], function ($, Backbone, _, Wine, WineListView, WineDetailsView, WineCollection ) {
+    "use strict";
     var appRouter = Backbone.Router.extend({
 
         initialize : function() {
@@ -36,7 +37,7 @@ define([
         },
 
         newWine : function() {
-            var that = this
+            var that = this;
             this.before(function() {
                 // uses special options 'model' and 'collection' to attach to the view
                 // http://backbonejs.org/#View-constructor

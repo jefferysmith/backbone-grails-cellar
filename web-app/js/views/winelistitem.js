@@ -4,6 +4,7 @@ define([
         'backbone',
         'text!templates/wine-list-item.html'
         ], function ($, _, Backbone, WineListItemTemplate) {
+    "use strict";
     var wineListItemView = Backbone.View.extend({
 
         tagName : "li",
@@ -11,13 +12,13 @@ define([
         template: _.template(WineListItemTemplate),
 
         initialize : function() {
-            console.log('winelistitemview init')
+            console.log('winelistitemview init');
             this.model.bind("change", this.render, this);
             this.model.bind("destroy", this.close, this);
         },
 
         render : function(eventName) {
-            console.log('winelistitemview render')
+            console.log('winelistitemview render');
             $(this.el).html(this.template(this.model.toJSON()));
             return this;
         }

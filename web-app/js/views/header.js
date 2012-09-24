@@ -4,6 +4,7 @@ define([
   'backbone',
   'text!templates/header.html'
   ], function ($, _, Backbone, headerTemplate) {
+    "use strict";
 
     var headerView = Backbone.View.extend({
         
@@ -14,7 +15,7 @@ define([
         },
 
         render : function(eventName) {
-            console.log('headerview render')
+            console.log('headerview render');
             $(this.el).html(this.template());
             return this;
         },

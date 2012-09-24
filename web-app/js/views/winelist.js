@@ -4,12 +4,13 @@ define([
         'backbone',
         'views/winelistitem'
         ], function ($, _, Backbone, WineListItemView) {
+    "use strict";
     var wineListView = Backbone.View.extend({
 
         tagName : 'ul',
 
         initialize : function() {
-            console.log('winelistview init')
+            console.log('winelistview init');
             this.model.bind("reset", this.render, this);
             var self = this;
             this.model.bind("add", function(wine) {
@@ -20,7 +21,7 @@ define([
         },
 
         render : function(eventName) {
-            console.log('winelistview render')
+            console.log('winelistview render');
             this.model.each( function(wine) {
                 $(this.el).append(new WineListItemView({
                     model : wine
