@@ -1,0 +1,8 @@
+{
+  "name": "cellar-client",
+  "version": "0.0.1",
+  "description": "Web client for the cellar-service",
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
+}
