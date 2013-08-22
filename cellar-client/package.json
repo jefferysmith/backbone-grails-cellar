@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Web client for the cellar-service",
   "devDependencies": {
-    "grunt": "~0.4.1"
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.3"
   }
 }

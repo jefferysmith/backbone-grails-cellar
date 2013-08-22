@@ -1,5 +1,5 @@
 define([
-  'backbone', 
+  'backbone',
   'models/winemodel'
   ], function (Backbone, Wine) {
     "use strict";
