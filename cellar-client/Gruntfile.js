@@ -7,7 +7,7 @@ module.exports = function(grunt) {
                 trailing: true
             },
             target: {
-                src : ['scripts/**/*.js']
+                src : ['app/scripts/**/*.js']
             }
         }
     });
