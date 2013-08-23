@@ -2,6 +2,9 @@
 module.exports = function(grunt) {
 
     grunt.initConfig({
+        // make it easy to refer to properties within the package.json file
+        pkg: grunt.file.readJSON('package.json'),
+
         jshint: {
             options: {
                 trailing: true
