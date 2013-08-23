@@ -14,9 +14,9 @@ requirejs.config({
     handlebars: "../lib/handlebars",
     text: "../lib/text-2.0.5",
     json2: "../lib/json2",
-        
+
     // Templates
-    templates: "../tpl"
+    templates: "../templates"
   },
 
   // non-amd compliant dependencies
@@ -30,7 +30,7 @@ requirejs.config({
     'underscore': {
       exports: "_"
     },
-    
+
     'handlebars': {
       exports: "Handlebars"
     }
