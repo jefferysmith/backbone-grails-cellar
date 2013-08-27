@@ -1,3 +1,7 @@
 # the following folders are copied from the client and
 # should not be checked into source control in this project
 images/
+lib/
+scripts/
+styles/
+templates/
