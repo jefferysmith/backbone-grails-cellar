@@ -8,6 +8,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         clean: {
+            // remove copied client app files from grails 'web-app' directory
             dev: {
                 options: {force: true},
                 src: [
@@ -16,20 +17,16 @@ module.exports = function(grunt) {
                     serverWebapp + '/scripts',
                     serverWebapp + '/styles',
                     serverWebapp + '/templates',
-                    serverWebapp + 'index.html'
+                    serverWebapp + '/index.html'
                 ]
             }
         },
 
         copy: {
+            // copy client application into grails 'web-app' directory
             dev: {
                 files: [
-                    {expand: true, cwd: 'app/images/',src: ['**'], dest: serverWebapp + '/images/'},
-                    {expand: true, cwd: 'app/lib/',src: ['**'], dest: serverWebapp + '/lib/'},
-                    {expand: true, cwd: 'app/scripts/',src: ['**'], dest: serverWebapp + '/scripts/'},
-                    {expand: true, cwd: 'app/styles/',src: ['**'], dest: serverWebapp + '/styles/'},
-                    {expand: true, cwd: 'app/templates/',src: ['**'], dest: serverWebapp + '/templates/'},
-                    {expand: true, cwd: 'app/',src: ['index.html'], dest: serverWebapp }
+                    {expand: true, cwd: 'app/',src: ['**'], dest: serverWebapp }
                 ]
             }
         },
