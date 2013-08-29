@@ -7,6 +7,19 @@ module.exports = function(grunt) {
         // make it easy to refer to properties defined inside the package.json file
         pkg: grunt.file.readJSON('package.json'),
 
+        clean: {
+            dev: {
+                options: {force: true},
+                src: [
+                    serverWebapp + '/images',
+                    serverWebapp + '/lib',
+                    serverWebapp + '/scripts',
+                    serverWebapp + '/styles',
+                    serverWebapp + '/templates'
+                ]
+            }
+        },
+
         copy: {
             dev: {
                 files: [
@@ -31,7 +44,8 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('dev', ['copy:dev']);
+    grunt.registerTask('dev', ['clean:dev', 'copy:dev']);
     grunt.registerTask('default', ['jshint']);
 };
