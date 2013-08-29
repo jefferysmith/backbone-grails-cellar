@@ -15,7 +15,8 @@ module.exports = function(grunt) {
                     serverWebapp + '/lib',
                     serverWebapp + '/scripts',
                     serverWebapp + '/styles',
-                    serverWebapp + '/templates'
+                    serverWebapp + '/templates',
+                    serverWebapp + 'index.html'
                 ]
             }
         },
@@ -27,7 +28,8 @@ module.exports = function(grunt) {
                     {expand: true, cwd: 'app/lib/',src: ['**'], dest: serverWebapp + '/lib/'},
                     {expand: true, cwd: 'app/scripts/',src: ['**'], dest: serverWebapp + '/scripts/'},
                     {expand: true, cwd: 'app/styles/',src: ['**'], dest: serverWebapp + '/styles/'},
-                    {expand: true, cwd: 'app/templates/',src: ['**'], dest: serverWebapp + '/templates/'}
+                    {expand: true, cwd: 'app/templates/',src: ['**'], dest: serverWebapp + '/templates/'},
+                    {expand: true, cwd: 'app/',src: ['index.html'], dest: serverWebapp }
                 ]
             }
         },
