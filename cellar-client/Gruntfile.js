@@ -38,12 +38,20 @@ module.exports = function(grunt) {
             target: {
                 src : ['app/scripts/**/*.js']
             }
+        },
+
+        watch: {
+            dev: {
+                files: ['app/**'],
+                tasks: ['copy:dev']
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('dev', ['clean:dev', 'copy:dev']);
     grunt.registerTask('default', ['jshint']);
